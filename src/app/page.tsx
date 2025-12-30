@@ -28,7 +28,7 @@ export default function Home() {
                             </h2>
                             <div className="space-y-6 text-gray-700">
                                 <p className="text-lg md:text-l leading-relaxed">
-                                    180 Degrees Consulting is the world's largest consultancy for non-profits and social
+                                    180 Degrees Consulting is the world&apos;s largest consultancy for non-profits and social
                                     enterprises. We connect top university students with socially conscious
                                     organizations to provide affordable, high-quality strategic and operational advice.
                                 </p>

@@ -19,7 +19,7 @@ export default function HomeJoinSection() {
                         </p>
 
                         <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-                            180 Degrees Consulting @ UCI works hard to develop our members' experiences, and the
+                            180 Degrees Consulting @ UCI works hard to develop our members&apos; experiences, and the
                             career-agnostic problem-solving skills developed have allowed our alumni to regularly go
                             on to create immense impact at top consulting firms, banks, technology companies, and
                             more.

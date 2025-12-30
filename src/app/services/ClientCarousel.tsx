@@ -47,7 +47,7 @@ const styleSheet = `
 
 const getPath = (filename: string) => `/images/clients/${filename}`;
 
-const shuffleArray = (array: any[]) => {
+const shuffleArray = <T,>(array: T[]): T[] => {
     const newArray = [...array];
     for (let i = newArray.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -56,21 +56,27 @@ const shuffleArray = (array: any[]) => {
     return newArray;
 };
 
-const chunkArray = (array: any[], numChunks: number) => {
-    const result: any[][] = Array.from({ length: numChunks }, () => []);
+const chunkArray = <T,>(array: T[], numChunks: number): T[][] => {
+    const result: T[][] = Array.from({ length: numChunks }, () => []);
     array.forEach((item, index) => {
         result[index % numChunks].push(item);
     });
     return result;
 };
 
+interface ClientData {
+    name: string;
+    src: string;
+}
+
 export default function ClientCarousel() {
-    const [rows, setRows] = useState<{ name: string, src: string }[][]>([]);
+    const [rows, setRows] = useState<ClientData[][]>([]);
 
     useEffect(() => {
         const priorityData = PRIORITY_CLIENTS.map(name => ({ name, src: getPath(name) }));
         const otherData = shuffleArray(OTHER_CLIENTS).map(name => ({ name, src: getPath(name) }));
         const allClients = [...priorityData, ...otherData];
+
         setRows(chunkArray(allClients, 3));
     }, []);
 

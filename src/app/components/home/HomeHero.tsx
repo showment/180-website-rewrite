@@ -21,7 +21,7 @@ export default function HomeHero() {
                 <div className="w-full px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
                     <div className="text-left">
                         <p className="text-white text-xl md:text-2xl mb-4 font-light">
-                            Irvine's Premier Consulting Group
+                            Irvine&apos; Premier Consulting Group
                         </p>
                         <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white">
                             180 Degrees Consulting @ UCI
