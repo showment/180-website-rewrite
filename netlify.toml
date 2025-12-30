@@ -4,3 +4,4 @@ package = "netlify-plugin-cloudinary"
 [plugins.inputs]
 cloudName = "dkh7csqeb"
 deliveryType = "upload"
+imagesPath = "public/images"
