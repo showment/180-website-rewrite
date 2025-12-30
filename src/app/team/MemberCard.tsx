@@ -33,7 +33,6 @@ const MemberCard = memo(function MemberCard({member}: { member: Member }) {
     const imgSrc = `/images/members/${first}_${last}.webp`;
 
     const [imgError, setImgError] = useState(false);
-    // 1. New state to track if image has finished loading
     const [isLoading, setIsLoading] = useState(true);
 
     const major1 = member["Major #1"] || member["Major 1"] || member["Major"] || "";
