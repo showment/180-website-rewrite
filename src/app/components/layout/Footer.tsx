@@ -7,7 +7,7 @@ export default function Footer() {
             <div
                 className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16 flex flex-col md:flex-row justify-between items-center md:items-start">
 
-                <div className="text-left mb-6 md:mb-0 md:max-w-lg">
+                <div className="text-center md:text-left mb-6 md:mb-0 md:max-w-lg">
                     <p className="text-sm font-medium mb-2 text-white">
                         © 2026 180 Degrees Consulting @ UCI
                     </p>

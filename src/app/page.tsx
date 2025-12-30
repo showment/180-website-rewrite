@@ -14,16 +14,15 @@ export default function Home() {
         <>
             <HomeHero/>
 
-            <div className="relative h-screen w-full bg-white overflow-hidden">
+            <div className="relative h-auto lg:h-screen w-full bg-white overflow-hidden py-20 lg:py-0">
                 <div
                     className="hidden lg:block absolute -top-24 -right-10 w-[50vw] h-[120%] z-0 transform -rotate-3 origin-top-right pointer-events-none">
                     <HomeCollage/>
                 </div>
 
-                <div className="relative z-10 h-full max-w-7xl mx-auto px-4 md:px-8 lg:px-16 pointer-events-none">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 h-full items-center">
+                <div className="relative z-10 h-auto lg:h-full max-w-7xl mx-auto px-4 md:px-8 lg:px-16 pointer-events-none">                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 h-full items-center">
                         <div className="space-y-8 pointer-events-auto pr-8 lg:pr-12">
-                            <h2 className="text-1xl md:text-2xl lg:text-5xl font-bold text-gray-900">
+                            <h2 className="text-3xl md:text-2xl lg:text-5xl font-bold text-gray-900">
                                 Who We Are
                             </h2>
                             <div className="space-y-6 text-gray-700">
