@@ -10,7 +10,7 @@ export default function JoinPage() {
     return (
         <div className="min-h-screen bg-white">
             <PageHero
-                title="Winter 2025 Recruitment"
+                title="Winter 2026 Recruitment"
                 subtitle="Join a community of passionate consultants dedicated to making a difference"
                 imageSrc="/images/heros/join_hero.webp"
             />

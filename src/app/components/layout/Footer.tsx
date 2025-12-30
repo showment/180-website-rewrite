@@ -9,7 +9,7 @@ export default function Footer() {
 
                 <div className="text-left mb-6 md:mb-0 md:max-w-lg">
                     <p className="text-sm font-medium mb-2 text-white">
-                        © 2025 180 Degrees Consulting @ UCI
+                        © 2026 180 Degrees Consulting @ UCI
                     </p>
                     <p className="text-xs text-gray-500 leading-relaxed">
                         We are a student organization acting independently of the University of California.
