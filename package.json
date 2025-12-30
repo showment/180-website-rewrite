@@ -15,7 +15,6 @@
     "@mui/material": "^7.3.6",
     "framer-motion": "^12.23.26",
     "lucide-react": "^0.562.0",
-    "netlify-plugin-cloudinary": "^1.17.0",
     "next": "^15.5.9",
     "pro-gallery": "^5.0.119",
     "react": "19.1.0",
