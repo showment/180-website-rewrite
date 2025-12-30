@@ -12,7 +12,8 @@ export default function HomeHero() {
                     alt="180DC UCI Background"
                     fill
                     className="object-cover"
-                    priority
+                    priority={true}
+                    sizes="100vw"
                 />
                 <div className="absolute inset-0 bg-black/65"></div>
             </div>

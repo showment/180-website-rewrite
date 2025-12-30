@@ -16,7 +16,8 @@ export default function PageHero({title, subtitle, imageSrc}: PageHeroProps) {
                     alt={title}
                     fill
                     className="object-cover"
-                    priority
+                    priority={true}
+                    sizes="100vw"
                 />
                 <div className="absolute inset-0 bg-black/70"></div>
             </div>
