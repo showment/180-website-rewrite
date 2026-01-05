@@ -6,7 +6,7 @@ export const recruitmentTimelineEvents = [
         date: 'Tuesday 1/6',
         title: 'Info Session & Casing Workshop',
         time: '6 PM - 7 PM',
-        location: 'TBD',
+        location: 'SB1 1200',
         icon: Users,
         description: "Join 180 Degrees Consulting for an info session and case workshop. Meet our members, learn about opportunities at 180DC, and get a guided introduction to the consulting case interview format."
     },
