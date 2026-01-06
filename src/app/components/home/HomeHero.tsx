@@ -8,7 +8,7 @@ export default function HomeHero() {
         <div className="relative h-screen w-full">
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="/images/heros/home_hero-optimized.webp"
+                    src="/images/heros/home_hero.webp"
                     alt="180DC UCI Background"
                     fill
                     className="object-cover"
