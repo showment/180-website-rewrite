@@ -8,7 +8,7 @@ export default function HomeHero() {
         <div className="relative h-screen w-full">
             <div className="absolute inset-0 z-0">
                 <Image
-                    src="/images/heros/home_hero.webp"
+                    src="/images/heros/home_hero-optimized.webp"
                     alt="180DC UCI Background"
                     fill
                     className="object-cover"
@@ -22,7 +22,7 @@ export default function HomeHero() {
                 <div className="w-full px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
                     <div className="text-left">
                         <p className="text-white text-xl md:text-2xl mb-4 font-light">
-                            Irvine&apos; Premier Consulting Group
+                            Irvine&apos;s Premier Consulting Group
                         </p>
                         <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold text-white">
                             180 Degrees Consulting @ UCI
