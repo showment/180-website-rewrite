@@ -13,6 +13,7 @@ export default function NavBar() {
         { href: "/services", label: "Services" },
         { href: "/team", label: "Team" },
         { href: "/join-us", label: "Join" },
+        { href: "/case-competition", label: "Case Competition" },
         { href: "/contact", label: "Contact Us" },
     ];
 
