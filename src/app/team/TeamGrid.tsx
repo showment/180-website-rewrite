@@ -8,12 +8,9 @@ const TeamGrid = memo(function TeamGrid({eyebrow, title, list}: TeamGridProps) {
     if (!list.length) return null;
     return (
         <section>
-            <div className="flex items-end justify-between gap-6 mb-8">
-                <div>
-                    <p className="eyebrow text-brand-deep">{eyebrow}</p>
-                    <h2 className="display mt-3 text-3xl md:text-4xl">{title}</h2>
-                </div>
-                <p className="text-sm text-slate font-semibold shrink-0">{list.length}</p>
+            <div className="mb-8">
+                <p className="eyebrow text-brand-deep">{eyebrow}</p>
+                <h2 className="display mt-3 text-3xl md:text-4xl">{title}</h2>
             </div>
             <div className="flex flex-wrap justify-center gap-4">
                 {list.map((m, i) => (
