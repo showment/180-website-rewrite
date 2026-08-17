@@ -1,29 +1,22 @@
 import type {Metadata} from "next";
-import {Manrope} from "next/font/google";
+import {Inter_Tight, Manrope} from "next/font/google";
 import "./globals.css";
 import NavBar from "@/app/components/layout/Navbar";
 import Footer from "@/app/components/layout/Footer";
 import React from "react";
 
-const manrope = Manrope({
-    variable: "--font-manrope",
-    subsets: ["latin"],
-    weight: ["200", "300", "400", "500", "600", "700", "800"],
-});
+const manrope = Manrope({variable: "--font-manrope", subsets: ["latin"], weight: ["400", "500", "600", "700"]});
+const interTight = Inter_Tight({variable: "--font-inter-tight", subsets: ["latin"], weight: ["500", "600", "700", "800"]});
 
 export const metadata: Metadata = {
-    title: "180 Degrees Consulting - UC Irvine",
-    description: "Irvine's Premier Consulting Group",
+    title: "180 Degrees Consulting @ UC Irvine",
+    description: "Student consulting teams at UC Irvine, paired with nonprofits, startups, and companies for ten-week engagements.",
 };
 
-export default function RootLayout({
-                                       children,
-                                   }: Readonly<{
-    children: React.ReactNode;
-}>) {
+export default function RootLayout({children}: Readonly<{ children: React.ReactNode }>) {
     return (
-        <html lang="en">
-        <body className={`${manrope.variable} antialiased`}>
+        <html lang="en" className={`${manrope.variable} ${interTight.variable}`}>
+        <body className="antialiased">
         <NavBar/>
         {children}
         <Footer/>

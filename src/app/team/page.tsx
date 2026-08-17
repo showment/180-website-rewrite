@@ -1,5 +1,7 @@
 import TeamClient from "./TeamClient";
 
+export const metadata = {title: "Team | 180 Degrees Consulting @ UCI"};
+
 type TeamMember = Record<string, string>;
 
 function parseCSV(csvText: string): TeamMember[] {
@@ -18,11 +20,9 @@ export default async function TeamPage() {
         "https://docs.google.com/spreadsheets/d/e/2PACX-1vTQClsy4nUnoM8sL5ujmgcMWazD77YEQWMwzJOkyw7y8GAGDew9j-0nRkrZIDeHIWd6XwM07KdDQMVN/pub?output=csv";
 
     let members: TeamMember[] = [];
-
     try {
-        const res = await fetch(docsUrl);
-        const csvText = await res.text();
-        members = parseCSV(csvText);
+        const res = await fetch(docsUrl, {next: {revalidate: 3600}});
+        members = parseCSV(await res.text());
     } catch (err) {
         console.error("Error fetching Google Sheet:", err);
     }

@@ -2,113 +2,55 @@
 
 import React, {useState} from 'react';
 
+const field = "w-full px-4 py-3 rounded-xl border border-line bg-white outline-none focus:border-ink transition-colors";
+
 export default function ContactForm() {
-    const [result, setResult] = useState("");
-    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState<'idle' | 'sending' | 'ok' | 'error'>('idle');
+    const [message, setMessage] = useState('');
 
     const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        setLoading(true);
-        setResult("Sending...");
-
-        const formData = new FormData(event.currentTarget);
+        const form = event.currentTarget;
+        setStatus('sending');
+        const formData = new FormData(form);
         formData.append("access_key", process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "");
-
         try {
-            const response = await fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                body: formData
-            });
-
-            const data = await response.json();
-
-            if (data.success) {
-                setResult("✅ Form Submitted Successfully!");
-                event.currentTarget.reset();
-            } else {
-                setResult("❌ " + data.message);
-            }
-        } catch (err) {
-            setResult("❌ Network error. Please try again later.");
-        } finally {
-            setLoading(false);
+            const res = await fetch("https://api.web3forms.com/submit", {method: "POST", body: formData});
+            const data = await res.json();
+            if (data.success) { setStatus('ok'); setMessage("Sent. We'll get back to you soon."); form.reset(); }
+            else { setStatus('error'); setMessage(data.message || "Something went wrong. Email us directly instead."); }
+        } catch {
+            setStatus('error'); setMessage("Network error. Email uci@180dc.org instead.");
         }
     };
 
     return (
-        <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-200">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">For General Inquiries</h2>
-
-            <form onSubmit={onSubmit} className="space-y-6">
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Name <span className="text-gray-400">(required)</span>
-                    </label>
-                    <div className="grid grid-cols-2 gap-4">
-                        <div>
-                            <label className="block text-xs text-gray-600 mb-1">First Name</label>
-                            <input
-                                type="text"
-                                name="first_name"
-                                required
-                                className="w-full px-4 py-3 text-black border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none"
-                            />
-                        </div>
-                        <div>
-                            <label className="block text-xs text-gray-600 mb-1">Last Name</label>
-                            <input
-                                type="text"
-                                name="last_name"
-                                required
-                                className="w-full px-4 py-3 text-black border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none"
-                            />
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Email <span className="text-gray-400">(required)</span>
-                    </label>
-                    <input
-                        type="email"
-                        name="email"
-                        required
-                        className="w-full px-4 py-3 text-black border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none"
-                    />
-                </div>
-
-                <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Message <span className="text-gray-400">(required)</span>
-                    </label>
-                    <textarea
-                        name="message"
-                        required
-                        rows={6}
-                        className="w-full px-4 py-3 text-black border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent outline-none resize-none"
-                    ></textarea>
-                </div>
-
-                <div className="flex flex-col items-end gap-4">
-                    <button
-                        type="submit"
-                        disabled={loading}
-                        className={`px-8 py-3 text-white font-semibold rounded-lg transition-all duration-300 hover:opacity-90 hover:shadow-lg ${
-                            loading ? "opacity-70 cursor-not-allowed" : ""
-                        }`}
-                        style={{backgroundColor: '#8BC34A'}}
-                    >
-                        {loading ? "Sending..." : "Submit"}
-                    </button>
-
-                    {result && (
-                        <p className={`text-sm font-medium ${result.includes("✅") ? "text-green-600" : "text-red-600"}`}>
-                            {result}
-                        </p>
-                    )}
-                </div>
-            </form>
-        </div>
+        <form onSubmit={onSubmit} className="bg-fog rounded-3xl p-8 md:p-10 space-y-5">
+            <div>
+                <p className="eyebrow text-brand-deep">Message</p>
+                <h2 className="display mt-3 text-3xl">Send a message</h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <label className="block text-sm font-semibold">First name<input name="first_name" required className={`${field} mt-2 font-normal`}/></label>
+                <label className="block text-sm font-semibold">Last name<input name="last_name" required className={`${field} mt-2 font-normal`}/></label>
+            </div>
+            <label className="block text-sm font-semibold">Email<input type="email" name="email" required className={`${field} mt-2 font-normal`}/></label>
+            <label className="block text-sm font-semibold">I am
+                <select name="audience" className={`${field} mt-2 font-normal`} defaultValue="">
+                    <option value="" disabled>Choose one</option>
+                    <option>An organization looking for a project team</option>
+                    <option>A student interested in joining</option>
+                    <option>An alum</option>
+                    <option>Something else</option>
+                </select>
+            </label>
+            <label className="block text-sm font-semibold">Message<textarea name="message" required rows={6} className={`${field} mt-2 font-normal resize-none`}/></label>
+            <div className="flex items-center justify-between gap-4 pt-2">
+                <p className={`text-sm font-semibold ${status === 'error' ? 'text-red-600' : 'text-brand-deep'}`} aria-live="polite">{message}</p>
+                <button type="submit" disabled={status === 'sending'} className="pill pill-ink disabled:opacity-60">
+                    {status === 'sending' ? 'Sending' : 'Send'}
+                </button>
+            </div>
+        </form>
     );
 }

@@ -1,61 +1,64 @@
-'use client';
-
 import React from 'react';
-import PageHero from '@/app/components/PageHero';
-import TimelineItem from './TimelineItem';
+import PageHeader from '@/app/components/ui/PageHeader';
+import SectionHead from '@/app/components/ui/SectionHead';
+import RecruitmentTimeline from './RecruitmentTimeline';
+import InsideStrip from '@/app/components/home/InsideStrip';
 import AlumniLogoGrid from './AlumniLogoGrid';
-import {recruitmentTimelineEvents} from "@/data/recruitmentTimelineData";
+import {memberBenefits} from '@/data/siteData';
+import {recruitmentTimelineEvents} from '@/data/recruitmentTimelineData';
+import {CYCLE} from '@/data/siteData';
+
+export const metadata = {title: "Join | 180 Degrees Consulting @ UCI"};
 
 export default function JoinPage() {
+    const applyEvent = recruitmentTimelineEvents.find(e => e.submissionLink);
     return (
-        <div className="min-h-screen bg-white">
-            <PageHero
-                title="Winter 2026 Recruitment"
-                subtitle="Join a community of passionate consultants dedicated to making a difference"
-                imageSrc="/images/heros/join_hero.webp"
-            />
+        <>
+            <PageHeader
+                eyebrow={CYCLE.label}
+                title="Join us."
+                lede="We recruit from every major each cycle. What membership involves, and how the process runs."
+                image="/images/heros/join_hero.webp"
+            >
+                {applyEvent?.submissionLink && CYCLE.open
+                    ? <a href={applyEvent.submissionLink} target="_blank" rel="noopener noreferrer" className="pill pill-brand">Apply now <span aria-hidden="true">→</span></a>
+                    : <a href="#timeline" className="pill pill-brand">See the timeline <span aria-hidden="true">→</span></a>}
+                <a href="https://www.instagram.com/180dcuci/" target="_blank" rel="noopener noreferrer" className="pill pill-ghost">Follow for dates</a>
+            </PageHeader>
 
-            <div className="w-full bg-gray-50 py-8 md:py-10">
-                <p className="text-base font-medium md:text-lg text-gray-700 max-w-6xl mx-auto text-left px-4 md:px-8 lg:px-16">
-                    180 Degrees Consulting works effectively by recruiting from a diverse range of backgrounds and
-                    bringing together a broad range of skills this provides. If you are a student brimming with bright
-                    ideas and have a desire to make a real difference with your skill-set, then we encourage you to
-                    apply so that we can help you realize your potential.
-                </p>
-            </div>
-
-            <div className="w-full bg-white py-8 md:py-12">
-                <div className="max-w-5xl mx-auto px-4 md:px-8 lg:px-16">
-                    <div className="text-center mb-12">
-                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">Recruitment Timeline</h2>
-                    </div>
-
-                    <div className="space-y-4">
-                        {recruitmentTimelineEvents.map((event, index) => (
-                            <TimelineItem
-                                key={index}
-                                event={event}
-                                isLast={index === recruitmentTimelineEvents.length - 1}
-                            />
-                        ))}
-                    </div>
+            {/* Membership: photo strip first, then what it involves. */}
+            <section className="py-20 lg:py-28 overflow-hidden">
+                <div className="mx-auto max-w-7xl px-6 lg:px-10">
+                    <SectionHead
+                        eyebrow="Inside 180DC"
+                        title="What membership involves."
+                        aside={<p>Client work, training, and a network. Plus retreats, socials, office tours, and the case competition we host each spring. No prior consulting experience expected.</p>}
+                    />
                 </div>
-            </div>
+                <InsideStrip/>
+                <dl className="mx-auto max-w-7xl px-6 lg:px-10 mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
+                    {memberBenefits.map(b => (
+                        <div key={b.title} className="border-t border-ink pt-5">
+                            <dt className="display text-xl">{b.title}</dt>
+                            <dd className="mt-3 text-sm text-slate leading-relaxed">{b.text}</dd>
+                        </div>
+                    ))}
+                </dl>
+            </section>
 
-            <div className="w-full bg-gray-50 py-8 md:py-12">
-                <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
-                    <div className="text-center mb-6">
-                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Where Our Alumni Go</h2>
-                        <p className="text-sm md:text-base text-gray-700 max-w-3xl mx-auto leading-relaxed">
-                            180 Degrees Consulting @ UCI works hard to develop our members&apos; experiences, and the
-                            career-agnostic problem-solving skills developed have allowed our alumni to regularly go on
-                            to create immense impact at top consulting firms, banks, technology companies, and more.
-                        </p>
-                    </div>
+            <RecruitmentTimeline events={recruitmentTimelineEvents} open={CYCLE.open}/>
 
+            <section className="py-20 lg:py-28">
+                <div className="mx-auto max-w-7xl px-6 lg:px-10">
+                    <SectionHead
+                        eyebrow="After 180DC"
+                        title="Where members go next."
+                        aside={<p>Consulting, banking, and tech, mostly. Alumni come back for panels, coffee chats, and referrals.</p>}
+                    />
                     <AlumniLogoGrid/>
                 </div>
-            </div>
-        </div>
+            </section>
+
+        </>
     );
 }

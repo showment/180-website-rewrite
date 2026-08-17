@@ -1,96 +1,45 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X } from 'lucide-react';
+import {Menu, X} from 'lucide-react';
+
+const navLinks = [
+    {href: "/services", label: "Services"},
+    {href: "/team", label: "Team"},
+    {href: "/join-us", label: "Join"},
+];
 
 export default function NavBar() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const navLinks = [
-        { href: "/", label: "Home" },
-        { href: "/services", label: "Services" },
-        { href: "/team", label: "Team" },
-        { href: "/join-us", label: "Join" },
-        { href: "/case-competition", label: "Case Competition" },
-        { href: "/contact", label: "Contact Us" },
-    ];
+    const [open, setOpen] = useState(false);
 
     return (
-        <nav
-            className={`
-                absolute w-full z-50 transition-colors duration-300 ease-in-out
-                ${isMenuOpen ? 'bg-neutral-950/95 backdrop-blur-md shadow-sm' : 'bg-transparent'}
-            `}
-        >
-            <style jsx>{`
-                @keyframes fadeInDown {
-                    from { opacity: 0; transform: translateY(-10px); }
-                    to { opacity: 1; transform: translateY(0); }
-                }
-                .animate-fade-in-down {
-                    animation: fadeInDown 0.3s ease-out forwards;
-                }
-            `}</style>
-
-            <div className="flex items-center justify-between px-4 py-2">
-                <div className="pt-2 flex-shrink-0">
-                    <Link href="/" className="inline-block">
-                        <Image
-                            src='/images/logo.webp'
-                            alt="180DC Logo"
-                            className="h-10 md:h-12 w-auto px-2 md:px-4"
-                            width={100}
-                            height={60}
-                            priority
-                        />
+        <header className="fixed top-4 inset-x-0 z-50">
+            <div className="mx-auto max-w-7xl px-6 lg:px-10">
+            <div className="rounded-3xl md:rounded-full bg-ink/70 backdrop-blur-md border border-white/10 text-white">
+                <div className="h-14 pl-5 pr-2 flex items-center justify-between">
+                    <Link href="/" className="flex items-center" aria-label="180 Degrees Consulting UC Irvine, home">
+                        <Image src="/images/logo.webp" alt="" width={190} height={80} priority className="h-8 w-auto"/>
                     </Link>
-                </div>
-
-                <div className="hidden md:block">
-                    <ul className="flex items-center space-x-5 px-4 font-medium text-white">
-                        {navLinks.map((link) => (
-                            <li key={link.label}>
-                                <Link
-                                    href={link.href}
-                                    className="hover:text-gray-300 transition-colors"
-                                >
-                                    {link.label}
-                                </Link>
-                            </li>
+                    <nav className="hidden md:flex items-center gap-1 text-sm font-semibold">
+                        {navLinks.map(l => (
+                            <Link key={l.href} href={l.href} className="px-4 py-2 rounded-full hover:bg-white/10 transition-colors">{l.label}</Link>
                         ))}
-                    </ul>
-                </div>
-
-                <div className="md:hidden flex items-center">
-                    <button
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="text-white focus:outline-none p-2 transition-transform duration-200 active:scale-95"
-                        aria-label="Toggle menu"
-                    >
-                        {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+                        <Link href="/contact" className="ml-2 pill pill-brand !py-2.5 !px-4 !text-sm">Work with us</Link>
+                    </nav>
+                    <button className="md:hidden p-2 rounded-full hover:bg-white/10" onClick={() => setOpen(!open)} aria-label="Toggle menu" aria-expanded={open}>
+                        {open ? <X size={22}/> : <Menu size={22}/>}
                     </button>
                 </div>
+                {open && (
+                    <nav className="md:hidden border-t border-white/10 px-5 py-4 flex flex-col gap-3 text-base font-semibold">
+                        {navLinks.map(l => <Link key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</Link>)}
+                        <Link href="/contact" onClick={() => setOpen(false)} className="pill pill-brand mt-2 self-start">Work with us</Link>
+                    </nav>
+                )}
             </div>
-
-            {isMenuOpen && (
-                <div className="md:hidden absolute top-full left-0 w-full bg-neutral-950/95 backdrop-blur-md animate-fade-in-down border-t border-b border-white/10 shadow-2xl">
-                    <ul className="flex flex-col items-center py-6 space-y-6 font-medium text-white">
-                        {navLinks.map((link) => (
-                            <li key={link.label} className="w-full text-center">
-                                <Link
-                                    href={link.href}
-                                    className="block py-2 text-lg hover:text-gray-300 transition-colors"
-                                    onClick={() => setIsMenuOpen(false)}
-                                >
-                                    {link.label}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            )}
-        </nav>
+            </div>
+        </header>
     );
 }

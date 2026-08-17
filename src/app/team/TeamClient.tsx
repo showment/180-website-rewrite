@@ -1,16 +1,17 @@
 "use client";
 
 import React, {useMemo} from "react";
-import Head from "next/head";
-import PageHero from "@/app/components/PageHero";
+import Link from "next/link";
+import PageHeader from "@/app/components/ui/PageHeader";
 import TeamGrid from "./TeamGrid";
 import {Member} from "./MemberCard";
 
-type TeamClientProps = { members: Member[] };
+// Paste an Airtable "Embed this view" URL here (or set NEXT_PUBLIC_TEAM_EMBED_URL) and the page swaps the CSV grid for the embed.
+const TEAM_EMBED_URL = process.env.NEXT_PUBLIC_TEAM_EMBED_URL || "";
 
 const norm = (s: string = "") => s.toLowerCase().trim();
 
-export default function TeamClient({members}: TeamClientProps) {
+export default function TeamClient({members}: { members: Member[] }) {
     const groups = useMemo(() => {
         const leadership: Member[] = [];
         const ems: Member[] = [];
@@ -18,22 +19,13 @@ export default function TeamClient({members}: TeamClientProps) {
 
         members.forEach((m) => {
             const role = norm(m.Role || "");
-            const isAssociateConsultant =
-                role.includes("associate consultant") || role === "ac" || role.includes("associate");
-            const isEngagementManager =
-                role.includes("engagement manager") || role === "em" || role.includes("eng. mgr");
-            const isConsultant = role.includes("consultant") && !isAssociateConsultant;
-            const isLeadership =
-                role.includes("president") ||
-                role.includes("vp") ||
-                role.includes("vice president") ||
-                role.includes("director") ||
-                (!isEngagementManager && !isConsultant && !isAssociateConsultant);
-
-            if (isAssociateConsultant) return;
-            else if (isEngagementManager) ems.push(m);
+            const isAC = role.includes("associate consultant") || role === "ac" || role.includes("associate");
+            const isEM = role.includes("engagement manager") || role === "em" || role.includes("eng. mgr");
+            const isConsultant = role.includes("consultant") && !isAC;
+            if (isAC) return;
+            if (isEM) ems.push(m);
             else if (isConsultant) consultants.push(m);
-            else if (isLeadership) leadership.push(m);
+            else leadership.push(m);
         });
 
         const rankOf = (roleRaw = "") => {
@@ -45,42 +37,53 @@ export default function TeamClient({members}: TeamClientProps) {
             if (r.includes("vice president of professional development")) return 4;
             if (r.includes("vice president") || /\bvp\b/.test(r)) return 5;
             if (r.includes("director of marketing")) return 6;
-            if (r.includes("director of data management")) return 7;
             return 7;
         };
-
         const byName = (a: Member, b: Member) =>
             (a["Last Name"] || "").localeCompare(b["Last Name"] || "") ||
             (a["First Name"] || "").localeCompare(b["First Name"] || "");
 
-        leadership.sort((a, b) => {
-            const diff = rankOf(a.Role) - rankOf(b.Role);
-            return diff !== 0 ? diff : byName(a, b);
-        });
+        leadership.sort((a, b) => (rankOf(a.Role) - rankOf(b.Role)) || byName(a, b));
         ems.sort(byName);
         consultants.sort(byName);
-
         return {leadership, ems, consultants};
     }, [members]);
 
+    const total = groups.leadership.length + groups.ems.length + groups.consultants.length;
+
     return (
         <>
-            <Head>
-                <title>Our Team</title>
-            </Head>
+            <PageHeader
+                eyebrow="Team"
+                title="Our team."
+                lede="Undergraduates from across UC Irvine, organized into an executive board, engagement managers, and project consultants."
+                image="/images/heros/team_hero.webp"
+            >
+                <Link href="/join-us" className="pill pill-brand">Join the team <span aria-hidden="true">→</span></Link>
+                <Link href="/contact" className="pill pill-ghost">Contact leadership</Link>
+            </PageHeader>
 
-            <div className="bg-white min-h-screen flex flex-col">
-                <PageHero
-                    title="Our Team"
-                    subtitle="A diverse community of talented individuals dedicated to delivering innovative solutions and driving impact"
-                    imageSrc="/images/heros/team_hero.webp"
-                />
-
-                <div className="py-2 px-4 bg-white flex-grow mt-12">
-                    <TeamGrid title="Executives" list={groups.leadership}/>
-                    <TeamGrid title="Engagement Managers" list={groups.ems}/>
-                    <TeamGrid title="Consultants" list={groups.consultants}/>
-                </div>
+            <div className="mx-auto max-w-7xl px-6 lg:px-10 py-20 lg:py-24">
+                {TEAM_EMBED_URL ? (
+                    <div className="rounded-3xl border border-line overflow-hidden bg-fog">
+                        <iframe
+                            src={TEAM_EMBED_URL}
+                            title="180DC UCI member directory"
+                            className="w-full h-[85vh] min-h-[640px]"
+                            style={{border: 0}}
+                            loading="lazy"
+                        />
+                    </div>
+                ) : (
+                    <div className="space-y-20">
+                        <TeamGrid eyebrow="Leadership" title="Executive Board" list={groups.leadership}/>
+                        <TeamGrid eyebrow="Project leads" title="Engagement Managers" list={groups.ems}/>
+                        <TeamGrid eyebrow="Teams" title="Consultants" list={groups.consultants}/>
+                        {total === 0 && (
+                            <p className="text-slate">The roster is loading from our directory. If this persists, email <a className="underline" href="mailto:uci@180dc.org">uci@180dc.org</a>.</p>
+                        )}
+                    </div>
+                )}
             </div>
         </>
     );

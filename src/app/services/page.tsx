@@ -1,56 +1,61 @@
-"use client"
-
 import React from "react";
-import PageHero from "@/app/components/PageHero";
-import ClientCarousel from "./ClientCarousel";
-import ProjectTimeline from "./ProjectTimeline";
-import ServiceOfferings from "./ServiceOfferings";
-import CallToAction from "@/app/components/sections/CallToAction";
+import Link from "next/link";
+import PageHeader from "@/app/components/ui/PageHeader";
+import SectionHead from "@/app/components/ui/SectionHead";
+import Engagement from "./Engagement";
+import ClientWall from "./ClientWall";
+import {practices} from "@/data/siteData";
+
+export const metadata = {title: "Services | 180 Degrees Consulting @ UCI"};
 
 export default function ServicesPage() {
     return (
-        <div className="min-h-screen bg-white">
-            <PageHero
-                title="Our Services"
-                subtitle="End-to-end consulting services designed to turn insight into action and ideas into results"
-                imageSrc="/images/heros/service_hero.webp"
-            />
+        <>
+            <PageHeader
+                eyebrow="Services"
+                title="Our services."
+                lede="Ten-week consulting engagements across six practice areas for nonprofits, social enterprises, and companies in Orange County."
+                image="/images/heros/service_hero.webp"
+            >
+                <Link href="/contact" className="pill pill-brand">Request a proposal <span aria-hidden="true">→</span></Link>
+            </PageHeader>
 
-            <div className="w-full bg-gray-50 py-8 md:py-10">
-                <p className="text-base font-medium md:text-lg text-gray-700 max-w-6xl mx-auto text-left px-4">
-                    180 Degrees Consulting offers high-quality consulting services without the premium price tag. Our
-                    team comprises of carefully selected top-tier university students who volunteer their time because
-                    they share our vision and values. We partner with non-profits and social enterprises to provide
-                    innovative, practical, and sustainable solutions to the challenges they face.
-                </p>
-            </div>
-
-            <ServiceOfferings/>
-
-            <ProjectTimeline/>
-
-            {/* Trusted By Section */}
-            <div className="w-full py-12 md:py-14 bg-white">
-                <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
-                    <div className="text-center mb-8">
-                        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-                            Trusted by Leading Organizations
-                        </h2>
-                        <p className="text-sm text-gray-500 uppercase tracking-wider mb-6">
-                            TRUSTED BY +40 NON-PROFITS
-                        </p>
+            <section className="bg-fog py-20 lg:py-28">
+                <div className="mx-auto max-w-7xl px-6 lg:px-10">
+                    <SectionHead
+                        eyebrow="Practice areas"
+                        title="Practice areas."
+                        aside={<p>Most engagements sit in one of these six areas. If yours doesn&apos;t, tell us anyway; scoping is part of the first two weeks.</p>}
+                    />
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {practices.map(p => (
+                            <div key={p.title} className="bg-white rounded-3xl p-7 border border-line">
+                                <h3 className="display text-2xl">{p.title}</h3>
+                                <p className="mt-3 text-slate">{p.blurb}</p>
+                                <div className="mt-6 flex flex-wrap gap-2 text-xs font-semibold">
+                                    {p.tags.map(t => <span key={t} className="px-3 py-1 rounded-full bg-fog">{t}</span>)}
+                                </div>
+                            </div>
+                        ))}
                     </div>
-
-                    <ClientCarousel/>
                 </div>
-            </div>
+            </section>
 
-            <CallToAction
-                title="Ready to Make an Impact?"
-                description="Let's work together to create sustainable solutions for your organization. Our team is ready to help you achieve your mission."
-                buttonText="Request Services"
-                buttonLink="/contact"
-            />
-        </div>
+            <Engagement/>
+            <ClientWall/>
+
+            <section className="mx-auto max-w-7xl px-6 lg:px-10 py-20 lg:py-28">
+                <div className="rounded-[2rem] bg-ink text-white p-10 md:p-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+                    <div>
+                        <p className="eyebrow text-brand">Work with us</p>
+                        <h2 className="display mt-4 text-4xl md:text-5xl lg:text-6xl max-w-2xl">Have a project in mind?</h2>
+                    </div>
+                    <div className="flex flex-wrap gap-3 shrink-0">
+                        <Link href="/contact" className="pill pill-brand">Request a proposal <span aria-hidden="true">→</span></Link>
+                        <a href="mailto:uci@180dc.org" className="pill pill-ghost">uci@180dc.org</a>
+                    </div>
+                </div>
+            </section>
+        </>
     );
 }

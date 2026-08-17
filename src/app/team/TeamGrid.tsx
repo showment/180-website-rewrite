@@ -1,24 +1,24 @@
 import React, {memo} from 'react';
 import MemberCard, {Member} from './MemberCard';
 
-interface TeamGridProps {
-    title: string;
-    list: Member[];
-}
+interface TeamGridProps { eyebrow: string; title: string; list: Member[]; }
 
-const TeamGrid = memo(function TeamGrid({title, list}: TeamGridProps) {
+/* Fixed card widths so every portrait is the same size; flex-wrap centers a short last row. */
+const TeamGrid = memo(function TeamGrid({eyebrow, title, list}: TeamGridProps) {
     if (!list.length) return null;
-
     return (
-        <section className="mb-12">
-            <h2 className="text-3xl text-black font-bold text-center mb-6">{title}</h2>
-
-            <div className="flex flex-wrap justify-center gap-x-4 gap-y-6 max-w-6xl mx-auto">
+        <section>
+            <div className="flex items-end justify-between gap-6 mb-8">
+                <div>
+                    <p className="eyebrow text-brand-deep">{eyebrow}</p>
+                    <h2 className="display mt-3 text-3xl md:text-4xl">{title}</h2>
+                </div>
+                <p className="text-sm text-slate font-semibold shrink-0">{list.length}</p>
+            </div>
+            <div className="flex flex-wrap justify-center gap-4">
                 {list.map((m, i) => (
-                    <div
-                        key={`${m["First Name"]}-${m["Last Name"]}-${i}`}
-                        className="w-[calc(50%-0.5rem)] sm:w-[calc(33.33%-0.67rem)] md:w-[calc(25%-0.75rem)] lg:w-[calc(20%-0.8rem)]"
-                    >
+                    <div key={`${m["First Name"]}-${m["Last Name"]}-${i}`}
+                         className="w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.667rem)] md:w-[calc(25%-0.75rem)] lg:w-[calc(20%-0.8rem)]">
                         <MemberCard member={m}/>
                     </div>
                 ))}
