@@ -24,6 +24,15 @@ Next.js 15 (app router) + Tailwind v4 + React 19. Live at 180dc-uci.org.
 - Client logos: /public/images/clients (transparent webp). Alumni logos: /public/images/logos. Featured lists are in siteData.ts.
 
 ## Known leftovers
-- /case-competition still uses the old PageHero and MUI Timeline. Restyle it with PageHeader/SectionHead or remove it, then uninstall @mui/material @mui/lab @emotion/react @emotion/styled pro-gallery swiper react-fast-marquee react-icons and delete src/app/components/PageHero.tsx.
 - Logo asset is white-on-transparent; the footer uses `filter: brightness(0)`. Export a dark variant when possible.
 - Confirm the homepage numbers: 48 clients (count of logo files), 5k+ hours (carried from old site).
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
