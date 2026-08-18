@@ -2,7 +2,6 @@ import React from "react";
 import HomeHero from "@/app/components/home/HomeHero";
 import Stats from "@/app/components/home/Stats";
 import WhoWeAre from "@/app/components/home/WhoWeAre";
-import Faq from "@/app/components/home/Faq";
 import Closer from "@/app/components/home/Closer";
 
 export default function Home() {
@@ -11,7 +10,6 @@ export default function Home() {
             <HomeHero/>
             <Stats/>
             <WhoWeAre/>
-            <Faq/>
             <Closer/>
         </>
     );

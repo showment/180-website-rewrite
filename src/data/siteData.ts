@@ -49,6 +49,20 @@ export const featuredClients = [
     "AlzheimersOC", "BBBSOC", "AutismPartnershipFoundation", "CASAOC", "BoysHopeGirlsHope", "CatalystFamilyInc",
 ];
 
+// Recruiting FAQ, shown at /join-us/faq. Items marked TODO need exec-board confirmation before launch.
+export const joinFaqs = [
+    {q: "How do I join?", a: "Each cycle opens with an info session and casing workshop, then an application, a group case interview, and an individual behavioral round. The full schedule is on the Join page timeline."},
+    {q: "Do I need consulting experience?", a: "No. We recruit for curiosity and work ethic, then teach the rest through casing workshops, mock interviews, and your first engagement."},
+    {q: "What majors do you recruit?", a: "Every major. Teams mix business, economics, engineering, data science, and humanities backgrounds, and the variety is a strength on projects."},
+    {q: "What do members actually do?", a: "You join a project team of four to six and ship a real deliverable to a real organization over a ten-week engagement, alongside training, socials, retreats, and office tours."},
+    // TODO confirm with exec board: weekly hours.
+    {q: "What is the time commitment?", a: "Plan for roughly five to eight hours a week during an engagement: a team meeting, client touchpoints, and your share of the research and deliverables."},
+    // TODO confirm with exec board: recruiting cadence.
+    {q: "When does recruiting happen?", a: "At the start of the quarter, most cycles. Follow @180dcuci on Instagram for exact dates; the Join page timeline updates each cycle."},
+    // TODO confirm with exec board: eligibility.
+    {q: "Can freshmen and transfer students apply?", a: "Yes. We evaluate every applicant on the same case and behavioral interviews, regardless of year."},
+];
+
 // Twelve alumni destinations to spotlight on Join. Files in /public/images/logos.
 export const featuredAlumniLogos = [
     "mckinsey.webp", "bain.webp", "bcg.webp", "goldman-sachs.webp", "google.webp", "apple.webp",

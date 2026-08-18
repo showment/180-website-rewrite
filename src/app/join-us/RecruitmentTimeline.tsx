@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import {motion, MotionConfig} from 'framer-motion';
 
 interface Ev {
@@ -18,7 +19,8 @@ export default function RecruitmentTimeline({events, open}: { events: Ev[]; open
                     <p className="text-slate mt-6">Info session, application, then three rounds. Every cycle follows the same shape. Dates change.</p>
                 </div>
                 <MotionConfig reducedMotion="user">
-                    <ol className="lg:col-span-8 space-y-3">
+                    <div className="lg:col-span-8">
+                        <ol className="space-y-3">
                         {events.map((e, i) => (
                             <motion.li
                                 key={e.title}
@@ -46,7 +48,9 @@ export default function RecruitmentTimeline({events, open}: { events: Ev[]; open
                                 </div>
                             </motion.li>
                         ))}
-                    </ol>
+                        </ol>
+                        <p className="mt-8 text-slate">More questions? <Link href="/join-us/faq" className="font-semibold text-ink underline underline-offset-4 hover:text-brand-deep">Read the FAQ <span aria-hidden="true">→</span></Link></p>
+                    </div>
                 </MotionConfig>
             </div>
         </section>
