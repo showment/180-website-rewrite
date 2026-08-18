@@ -13,6 +13,10 @@
     --font-display: var(--font-inter-tight), system-ui, sans-serif;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+}
+
 body {
     background: #fff;
     color: var(--color-ink);
@@ -58,6 +62,11 @@ body {
     .rise { opacity: 0; transform: translateY(16px); animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
     .d1 { animation-delay: 0.08s; } .d2 { animation-delay: 0.18s; } .d3 { animation-delay: 0.28s; } .d4 { animation-delay: 0.4s; }
 
+    /* Ledger rows: the hairline sweeps green, left to right, on hover. */
+    .ledger { position: relative; border-top: 1px solid var(--color-ink); }
+    .ledger::before { content: ""; position: absolute; top: -1px; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, var(--color-brand-deep), var(--color-brand)); opacity: 0; transform: scaleX(0); transform-origin: left; transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.35s ease; }
+    .ledger:hover::before { opacity: 1; transform: scaleX(1); }
+
     details summary { list-style: none; cursor: pointer; }
     details summary::-webkit-details-marker { display: none; }
     details[open] .chev { transform: rotate(45deg); }
@@ -68,5 +77,6 @@ body {
 @media (prefers-reduced-motion: reduce) {
     .rise { animation: none; opacity: 1; transform: none; }
     .marquee { animation: none; }
+    .ledger::before { transition: none; }
 }
 :focus-visible { outline: 2px solid var(--color-brand-deep); outline-offset: 3px; }

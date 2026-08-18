@@ -38,7 +38,7 @@ export default function JoinPage() {
                 <InsideStrip/>
                 <dl className="mx-auto max-w-7xl px-6 lg:px-10 mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
                     {memberBenefits.map(b => (
-                        <div key={b.title} className="border-t border-ink pt-5">
+                        <div key={b.title} className="ledger pt-5">
                             <dt className="display text-xl">{b.title}</dt>
                             <dd className="mt-3 text-sm text-slate leading-relaxed">{b.text}</dd>
                         </div>
@@ -46,7 +46,8 @@ export default function JoinPage() {
                 </dl>
             </section>
 
-            <RecruitmentTimeline events={recruitmentTimelineEvents} open={CYCLE.open}/>
+            {/* Icon components in the data can't cross the server->client boundary. */}
+            <RecruitmentTimeline events={recruitmentTimelineEvents.map(({icon: _icon, ...e}) => e)} open={CYCLE.open}/>
 
             <section className="py-20 lg:py-28">
                 <div className="mx-auto max-w-7xl px-6 lg:px-10">

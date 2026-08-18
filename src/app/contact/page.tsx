@@ -21,7 +21,7 @@ export default function ContactPage() {
                 lede="For project inquiries, recruiting questions, and general correspondence."
                 image="/images/heros/contact_hero.webp"
             >
-                <a href="mailto:uci@180dc.org" className="pill pill-brand">uci@180dc.org</a>
+                <a href="mailto:uci@180dc.org" className="pill pill-brand">Email</a>
                 <a href="https://www.linkedin.com/company/180-degrees-consulting-uci" target="_blank" rel="noopener noreferrer" className="pill pill-ghost">LinkedIn</a>
                 <a href="https://www.instagram.com/180dcuci/" target="_blank" rel="noopener noreferrer" className="pill pill-ghost">Instagram</a>
             </PageHeader>

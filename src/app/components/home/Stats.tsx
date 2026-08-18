@@ -3,7 +3,7 @@ import {heroStats} from '@/data/homeData';
 
 export default function Stats() {
     return (
-        <section className="mx-auto max-w-7xl px-6 lg:px-10 py-20 lg:py-28">
+        <section className="mx-auto max-w-7xl px-6 lg:px-10 pt-20 lg:pt-28">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                 {heroStats.map(s => (
                     <div key={s.label}>
@@ -12,6 +12,7 @@ export default function Stats() {
                     </div>
                 ))}
             </div>
+            <div className="mt-20 lg:mt-28 border-t border-line" aria-hidden="true"/>
         </section>
     );
 }

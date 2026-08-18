@@ -25,7 +25,7 @@ export default function ServicesPage() {
                     <SectionHead
                         eyebrow="Practice areas"
                         title="Practice areas."
-                        aside={<p>Most engagements sit in one of these six areas. If yours doesn&apos;t, tell us anyway; scoping is part of the first two weeks.</p>}
+                        aside={<p>Most engagements sit in one of these six areas. If yours doesn&apos;t, tell us anyway. Scoping is part of the first two weeks.</p>}
                     />
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {practices.map(p => (
@@ -52,7 +52,6 @@ export default function ServicesPage() {
                     </div>
                     <div className="flex flex-wrap gap-3 shrink-0">
                         <Link href="/contact" className="pill pill-brand">Request a proposal <span aria-hidden="true">→</span></Link>
-                        <a href="mailto:uci@180dc.org" className="pill pill-ghost">uci@180dc.org</a>
                     </div>
                 </div>
             </section>
