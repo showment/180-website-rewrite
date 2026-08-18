@@ -16,7 +16,10 @@ export default function Footer() {
                     <Image src="/images/logo.webp" alt="180 Degrees Consulting UC Irvine" width={180} height={75} className="h-8 w-auto logo-ink"/>
                     <p className="mt-4 text-xs text-slate leading-relaxed">
                         We are a student organization acting independently of the University of California. We take full
-                        responsibility for our organization and this website. © {new Date().getFullYear()} 180 Degrees Consulting @ UCI.
+                        responsibility for our organization and this website.
+                    </p>
+                    <p className="mt-2 text-xs text-slate leading-relaxed">
+                        © {new Date().getFullYear()} 180 Degrees Consulting @ UCI.
                     </p>
                 </div>
                 <ul className="flex gap-3">
