@@ -10,7 +10,7 @@ export default function Engagement() {
             <div className="mx-auto max-w-7xl px-6 lg:px-10">
                 <SectionHead
                     eyebrow="How an engagement runs"
-                    title="Ten weeks, start to finish."
+                    title="Ten weeks, start to finish"
                     aside={<p>One academic quarter. You meet the team in week two and see a final presentation in week nine.</p>}
                 />
                 <ol className="grid grid-cols-1 lg:grid-cols-4 gap-y-10 lg:gap-y-14">

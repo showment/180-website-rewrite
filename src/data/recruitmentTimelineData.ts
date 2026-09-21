@@ -1,68 +1,102 @@
-import { Calendar, Users, Briefcase, Coffee, PartyPopper } from 'lucide-react';
+import { Calendar, MapPin, Users, Briefcase, LucideIcon } from 'lucide-react';
 
+interface RecruitmentEvent {
+    group: string;
+    date: string;
+    title: string;
+    time?: string;
+    location?: string;
+    icon: LucideIcon;
+    highlight?: boolean;
+    inviteOnly?: boolean;
+    description?: string;
+    // Secondary link on the card: RSVP form, Zoom room, map pin, calendar file.
+    link?: string;
+    linkLabel?: string;
+    // Only on the application event. Gated by CYCLE.open in siteData.ts.
+    submissionLink?: string;
+}
 
-export const recruitmentTimelineEvents = [
+// TODO confirm with exec board before launch: the two TBD locations, the Zoom
+// link for Info Night #2, the application deadline time, and the application URL.
+export const recruitmentTimelineEvents: RecruitmentEvent[] = [
     {
-        date: 'Tuesday 1/6',
-        title: 'Info Session & Casing Workshop',
-        time: '6 PM - 7 PM',
-        location: 'SB1 1200',
-        icon: Users,
-        description: "Join 180 Degrees Consulting for an info session and case workshop. Meet our members, learn about opportunities at 180DC, and get a guided introduction to the consulting case interview format."
+        group: 'Boothing & Info Sessions',
+        date: 'Tuesday 9/22',
+        title: 'Anteater Involvement Fair',
+        time: '11:00 AM - 4:00 PM',
+        location: 'Aldrich Park',
+        icon: MapPin,
+        description: 'Find our booth at UCI’s fall involvement fair. Members are there all afternoon to talk through client projects, the recruiting process, and what a cycle actually looks like week to week.',
+        // TODO add link: the official Anteater Involvement Fair page.
     },
     {
-        date: 'Thursday 1/8',
-        title: 'Application Deadline',
-        time: '12:00 PM (Noon)',
-        location: 'Online Submission',
+        group: 'Boothing & Info Sessions',
+        date: 'Thursday 9/24',
+        title: 'Information Night & Case Workshop #1',
+        time: '6:00 PM - 7:00 PM',
+        location: 'SB1 1128',
+        icon: Users,
+        description: 'Join 180 Degrees Consulting for an info session and case workshop. Meet our members, learn about opportunities at 180DC, and get a guided introduction to the consulting case interview format.',
+        // TODO add link: RSVP form, if the team runs one this cycle.
+    },
+    {
+        group: 'Boothing & Info Sessions',
+        date: 'Monday 9/28',
+        title: 'MUSA Business Fair',
+        time: '5:00 PM - 7:00 PM',
+        location: 'Merage Courtyard',
+        icon: MapPin,
+        description: 'MUSA’s fall business org fair. Stop by our table to meet members and hear how 180DC compares to the other business organizations on campus.',
+    },
+    {
+        group: 'Boothing & Info Sessions',
+        date: 'Tuesday 9/29',
+        title: 'Ring Road Boothing',
+        time: '11:00 AM - 2:00 PM',
+        location: 'Ring Mall',
+        icon: MapPin,
+        description: 'Casual boothing between classes. Come ask about the application, the interview rounds, or the weekly time commitment.',
+    },
+    {
+        group: 'Boothing & Info Sessions',
+        date: 'Tuesday 9/29',
+        title: 'Information Night & Case Workshop #2',
+        time: '6:00 PM - 7:00 PM',
+        location: 'Online',
+        icon: Users,
+        description: 'The same info session and case workshop, run over Zoom for anyone who could not make the first night. Meet our members, learn about opportunities at 180DC, and get a guided introduction to the consulting case interview format.',
+        // TODO add the Zoom link here and uncomment.
+        link: 'https://uci.zoom.us/j/99903918364',
+        linkLabel: 'Join on Zoom',
+    },
+    {
+        group: 'Recruitment Timeline',
+        date: 'Thursday 10/1',
+        title: 'Applications Due',
+        time: '11:59 PM',
         icon: Calendar,
         highlight: true,
         description: 'Submit your application to be considered for 180DC membership. Our application collects basic information, short essays, and relevant documents such as your resume and transcript.',
-        submissionLink: 'https://airtable.com/appWvO04zoJtbCdJg/paguyQ9DKewVMW4Dl/form'
+        // TODO add the application URL here, then set CYCLE.open to true in siteData.ts.
+        submissionLink: 'https://airtable.com/app0gcJj3KThEFsld/paguyQ9DKewVMW4Dl/form',
     },
     {
-        date: 'Saturday 1/10',
-        title: 'R1: Group Case Interview',
-        time: 'Scheduled individually',
-        location: 'Location on Invite',
+        group: 'Recruitment Timeline',
+        date: 'Saturday 10/3',
+        title: 'Round 1 Interviews',
+        location: 'Location on invite',
         icon: Briefcase,
         inviteOnly: true,
-        description: 'Round 1 is a group interview where you’ll collaborate with other applicants on a case or discussion activity. This round helps us evaluate teamwork, problem-solving, and communication skills in a dynamic, interactive setting.'
+        description: 'Round 1 is a group case interview where you’ll collaborate with other applicants on a case or discussion activity. This round helps us evaluate teamwork, problem-solving, and communication skills in a dynamic, interactive setting.',
     },
     {
-        date: 'Sunday 1/11',
-        title: 'R2: Individual Behavioral',
-        time: 'Scheduled individually',
-        location: 'Location on Invite',
-        icon: Users,
-        inviteOnly: true,
-        description: 'Round 2 focuses on behavioral interviews, allowing us to get to know you personally, understand your experiences, and see how your skills align with 180DC’s values and culture.'
-    },
-    {
-        date: 'Mon-Fri 1/12-1/16',
-        title: 'Coffee Chats',
-        time: 'Flexible scheduling',
-        location: 'Various locations',
-        icon: Coffee,
-        inviteOnly: true,
-        description: 'Coffee chats are informal one-on-one meetings with current 180DC members. This is your chance to ask questions, learn about their experiences, and get personalized insights about life at 180DC in a relaxed setting.'
-    },
-    {
-        date: 'Wednesday 1/14',
-        title: 'Candidates Dinner',
-        time: '6 PM - 7 PM',
-        location: 'Location on Invite',
-        icon: PartyPopper,
-        inviteOnly: true,
-        description: 'A fun, casual dinner for final round candidates to connect with 180DC members. Enjoy food, conversation, and a chance to build relationships in a low-pressure environment.'
-    },
-    {
-        date: 'Saturday 1/17',
-        title: 'R3: Individual Case Interview',
-        time: 'Scheduled individually',
-        location: 'Location on Invite',
+        group: 'Recruitment Timeline',
+        date: 'Sunday 10/4',
+        title: 'Round 2 Interviews',
+        location: 'Location on invite',
         icon: Briefcase,
         inviteOnly: true,
-        description: 'Round 3 is the final round and consists of an individual case interview. You’ll be given a consulting case to solve independently, demonstrating your analytical thinking, structured problem-solving, and communication skills.'
+        description: 'Round 2 focuses on behavioral interviews, allowing us to get to know you personally, understand your experiences, and see how your skills align with 180DC’s values and culture. This round also includes a market sizing question, where we care far more about how you structure the estimate than about the final number.',
     },
 ];

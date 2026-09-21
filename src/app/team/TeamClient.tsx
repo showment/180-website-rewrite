@@ -19,10 +19,8 @@ export default function TeamClient({members}: { members: Member[] }) {
 
         members.forEach((m) => {
             const role = norm(m.Role || "");
-            const isAC = role.includes("associate consultant") || role === "ac" || role.includes("associate");
             const isEM = role.includes("engagement manager") || role === "em" || role.includes("eng. mgr");
-            const isConsultant = role.includes("consultant") && !isAC;
-            if (isAC) return;
+            const isConsultant = role.includes("consultant") || role === "sc" || role === "ac";
             if (isEM) ems.push(m);
             else if (isConsultant) consultants.push(m);
             else leadership.push(m);
@@ -43,9 +41,18 @@ export default function TeamClient({members}: { members: Member[] }) {
             (a["Last Name"] || "").localeCompare(b["Last Name"] || "") ||
             (a["First Name"] || "").localeCompare(b["First Name"] || "");
 
+        // Senior Consultant, then Consultant, then Associate Consultant. Check
+        // the qualifiers first, since both contain the word "consultant".
+        const tierOf = (roleRaw = "") => {
+            const r = norm(roleRaw);
+            if (r.includes("senior consultant") || r === "sc") return 0;
+            if (r.includes("associate consultant") || r === "ac") return 2;
+            return 1;
+        };
+
         leadership.sort((a, b) => (rankOf(a.Role) - rankOf(b.Role)) || byName(a, b));
         ems.sort(byName);
-        consultants.sort(byName);
+        consultants.sort((a, b) => (tierOf(a.Role) - tierOf(b.Role)) || byName(a, b));
         return {leadership, ems, consultants};
     }, [members]);
 
@@ -55,8 +62,8 @@ export default function TeamClient({members}: { members: Member[] }) {
         <>
             <PageHeader
                 eyebrow="Team"
-                title="Our team."
-                lede="Undergraduates from across UC Irvine, organized into an executive board, engagement managers, and project consultants."
+                title="Our Team"
+                lede="Our consultants come from a wide range of academic disciplines, professional backgrounds, and areas of expertise. That range is what allows our teams to approach a client's problem from more than one direction."
                 image="/images/heros/team_hero.webp"
             >
                 <Link href="/join-us" className="pill pill-brand">Join the team <span aria-hidden="true">→</span></Link>

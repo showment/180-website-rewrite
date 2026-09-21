@@ -16,8 +16,8 @@ export default function JoinPage() {
         <>
             <PageHeader
                 eyebrow={CYCLE.label}
-                title="Join us."
-                lede="We recruit from every major each cycle. What membership involves, and how the process runs."
+                title="Join Us"
+                lede="Our strength lies in the diversity of perspectives our consultants bring. We look for individuals who have pursued their interests deeply, approach problems rigorously, and work well alongside others."
                 image="/images/heros/join_hero.webp"
             >
                 {applyEvent?.submissionLink && CYCLE.open
@@ -31,8 +31,8 @@ export default function JoinPage() {
                 <div className="mx-auto max-w-7xl px-6 lg:px-10">
                     <SectionHead
                         eyebrow="Inside 180DC"
-                        title="What membership involves."
-                        aside={<p>Client work, training, and a network. Plus retreats, socials, office tours, and the case competition we host each spring. No prior consulting experience expected.</p>}
+                        title="What membership involves"
+                        aside={<p>A community that extends well past graduation. Members build their careers with the support of the people around them, an active alumni network, and friendships that last.</p>}
                     />
                 </div>
                 <InsideStrip/>
@@ -53,8 +53,8 @@ export default function JoinPage() {
                 <div className="mx-auto max-w-7xl px-6 lg:px-10">
                     <SectionHead
                         eyebrow="After 180DC"
-                        title="Where members go next."
-                        aside={<p>Consulting, banking, and tech, mostly. Alumni come back for panels, coffee chats, and referrals.</p>}
+                        title="Where members go next"
+                        aside={<p>Our members go on to consulting, finance, and technology. The network stays open long after graduation.</p>}
                     />
                     <AlumniLogoGrid/>
                 </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 interface PageHeaderProps {
     eyebrow: string;
@@ -14,8 +15,7 @@ export default function PageHeader({eyebrow, title, lede, image, objectPosition 
     return (
         <section className="relative min-h-[62svh] text-white flex flex-col">
             <div className="duo duo-hero absolute inset-0">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={image} alt="" style={{objectPosition}} fetchPriority="high"/>
+                <Image src={image} alt="" fill priority sizes="100vw" style={{objectPosition}}/>
             </div>
             <div className="relative flex-1 flex items-end">
                 <div className="mx-auto w-full max-w-7xl px-6 lg:px-10 pt-36 pb-14 lg:pb-16">

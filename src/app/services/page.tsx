@@ -2,8 +2,8 @@ import React from "react";
 import Link from "next/link";
 import PageHeader from "@/app/components/ui/PageHeader";
 import SectionHead from "@/app/components/ui/SectionHead";
-import Engagement from "./Engagement";
 import ClientWall from "./ClientWall";
+import CTABand from "@/app/components/ui/CTABand";
 import {practices} from "@/data/siteData";
 
 export const metadata = {title: "Services | 180 Degrees Consulting @ UCI"};
@@ -13,8 +13,8 @@ export default function ServicesPage() {
         <>
             <PageHeader
                 eyebrow="Services"
-                title="Our services."
-                lede="Ten-week consulting engagements across six practice areas for nonprofits, social enterprises, and companies in Orange County."
+                title="Our Services"
+                lede="Our consultants work across industries and sectors, advising established companies, startups, foundations, and nonprofits. Every engagement is scoped to the decision in front of you."
                 image="/images/heros/service_hero.webp"
             >
                 <Link href="/contact" className="pill pill-brand">Request a proposal <span aria-hidden="true">→</span></Link>
@@ -24,8 +24,8 @@ export default function ServicesPage() {
                 <div className="mx-auto max-w-7xl px-6 lg:px-10">
                     <SectionHead
                         eyebrow="Practice areas"
-                        title="Practice areas."
-                        aside={<p>Most engagements sit in one of these six areas. If yours doesn&apos;t, tell us anyway. Scoping is part of the first two weeks.</p>}
+                        title="Practice areas"
+                        aside={<p>From go-to-market strategy to operational redesign and financial modeling, most engagements draw on several of these areas at once. If yours does not fit neatly, tell us anyway.</p>}
                     />
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {practices.map(p => (
@@ -41,20 +41,14 @@ export default function ServicesPage() {
                 </div>
             </section>
 
-            <Engagement/>
             <ClientWall/>
 
-            <section className="mx-auto max-w-7xl px-6 lg:px-10 py-20 lg:py-28">
-                <div className="rounded-[2rem] bg-ink text-white p-10 md:p-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
-                    <div>
-                        <p className="eyebrow text-brand">Work with us</p>
-                        <h2 className="display mt-4 text-4xl md:text-5xl lg:text-6xl max-w-2xl">Have a project in mind?</h2>
-                    </div>
-                    <div className="flex flex-wrap gap-3 shrink-0">
-                        <Link href="/contact" className="pill pill-brand">Request a proposal <span aria-hidden="true">→</span></Link>
-                    </div>
-                </div>
-            </section>
+            <CTABand
+                eyebrow="Work with us"
+                title="Scope a project with us"
+                body="Tell us about your organization and the problem you are facing. We will follow up to discuss scope and how we would approach the work."
+                primary={{href: '/contact', label: 'Request a proposal'}}
+            />
         </>
     );
 }

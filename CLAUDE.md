@@ -24,7 +24,7 @@ Next.js 15 (app router) + Tailwind v4 + React 19. Live at 180dc-uci.org.
 - Client logos: /public/images/clients (transparent webp). Alumni logos: /public/images/logos. Featured lists are in siteData.ts.
 
 ## Known leftovers
-- Logo asset is white-on-transparent; the footer uses `filter: brightness(0)`. Export a dark variant when possible.
+- Logo: `/images/logo.webp` is white-on-transparent (navbar, on dark). `/images/logo-dark.webp` is the same art with the wordmark recoloured to ink and the green globe kept, used by the footer on light.
 - Confirm the homepage numbers: 48 clients (count of logo files), 5k+ hours (carried from old site).
 
 <!-- BEGIN:nextjs-agent-rules -->

@@ -10,7 +10,7 @@ export default function JoinFaqPage() {
         <>
             <PageHeader
                 eyebrow="Recruiting FAQ"
-                title="Questions, answered."
+                title="Questions, Answered"
                 lede="What applicants ask us most about joining 180DC."
                 image="/images/heros/join_hero.webp"
             >
@@ -22,7 +22,7 @@ export default function JoinFaqPage() {
                 <div className="mx-auto max-w-7xl px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-10">
                     <div className="lg:col-span-4">
                         <p className="eyebrow text-brand-deep">FAQ</p>
-                        <h2 className="display mt-4 text-4xl md:text-5xl">Common questions.</h2>
+                        <h2 className="display mt-4 text-4xl md:text-5xl">Common questions</h2>
                         <p className="text-slate mt-6">Anything we missed? Email <a className="underline" href="mailto:uci@180dc.org">uci@180dc.org</a> or ask at the info session.</p>
                     </div>
                     <div className="lg:col-span-8 divide-y divide-line">
@@ -32,6 +32,18 @@ export default function JoinFaqPage() {
                                     {f.q}<span className="chev text-2xl font-light transition-transform">+</span>
                                 </summary>
                                 <p className="mt-3 text-slate max-w-2xl">{f.a}</p>
+                                {'links' in f && f.links && (
+                                    <ul className="mt-4 max-w-2xl divide-y divide-line border-t border-line">
+                                        {f.links.map(l => (
+                                            <li key={l.href}>
+                                                <a href={l.href} target="_blank" rel="noopener noreferrer"
+                                                   className="flex items-baseline justify-between gap-6 py-3 text-sm font-semibold text-ink hover:text-brand-deep">
+                                                    {l.label}<span aria-hidden="true">→</span>
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
                             </details>
                         ))}
                     </div>

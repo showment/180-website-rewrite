@@ -1,9 +1,9 @@
 // Content shared across inner pages. Edit copy here, not in components.
 
 export const practices = [
-    {title: "Strategy", blurb: "Comprehensive plans aligned with your mission.", tags: ["Business strategy", "Project feasibility", "Fee-based modeling"]},
-    {title: "Market Research", blurb: "Data-driven insight into your market and the people you serve.", tags: ["Industry trends", "Target audience", "Competitive analysis"]},
-    {title: "Marketing & Fundraising", blurb: "Build the brand and a fundraising engine that lasts.", tags: ["Branding", "Fundraising strategy", "Event logistics"]},
+    {title: "Strategy", blurb: "Comprehensive plans aligned with where the organization is headed.", tags: ["Business strategy", "Project feasibility", "Fee-based modeling"]},
+    {title: "Market Research", blurb: "Data-driven insight into your market, your customers, and your competition.", tags: ["Industry trends", "Target audience", "Competitive analysis"]},
+    {title: "Marketing & Fundraising", blurb: "Build the brand and the engine that brings in revenue or funding.", tags: ["Branding", "Fundraising strategy", "Event logistics"]},
     {title: "Operations & Technology", blurb: "Streamline how you run and pick the tools to run on.", tags: ["Data management", "CRM selection", "PR & comms"]},
     {title: "Finance", blurb: "Financial planning and cost optimization.", tags: ["Cost management", "Investment feasibility", "Hiring plans"]},
     {title: "Organization", blurb: "Capacity, structure, and high-performing teams.", tags: ["Human capital", "Volunteer management", "Org structure"]},
@@ -23,7 +23,7 @@ export const engagement = [
 
 // Every client logo in /public/images/clients, for the wall on Services.
 export const allClients = [
-    "UnitedWay", "RonaldMcDonaldHouse", "SublimeSystems", "SpecialOlympicsSouthernCalifornia", "GuideDogsOfAmerica", "BestBuddies",
+    "BenNJerrys", "UnitedWay", "RonaldMcDonaldHouse", "SublimeSystems", "SpecialOlympicsSouthernCalifornia", "GuideDogsOfAmerica", "BestBuddies",
     "AlzheimersOC", "BBBSOC", "AutismPartnershipFoundation", "CASAOC", "BoysHopeGirlsHope", "CatalystFamilyInc",
     "ActionAllianceFoundation", "AllPeople", "AQuarterBlue", "ArtsForAll", "BarksOfLove", "BOSSInc", "BeyondBlindness",
     "BreastCancerAngels", "BridgeToConnect", "BuildingSkillsPartnership", "CasaTeresa", "CooperacionSantaAna", "DreamsforSchools",
@@ -34,33 +34,40 @@ export const allClients = [
 ];
 
 export const memberBenefits = [
-    {title: "Client work from your first quarter", text: "You join a project team of four to six and ship a real deliverable to a real organization in ten weeks."},
-    {title: "Case and interview training", text: "Casing workshops, mock interviews, and a resume book that gets members into consulting, finance, and tech."},
-    {title: "Alumni network", text: "Alumni at McKinsey, Bain, BCG, Goldman Sachs, Google, Deloitte, and more return for panels, coffee chats, and referrals."},
-    {title: "Chapter life", text: "Fall and spring retreats, socials with other UC chapters, office tours, and an annual case competition."},
+    {title: "Client work", text: "You join a project team of four to six and ship a real deliverable to a real organization."},
+    {title: "Career support", text: "Preparation and mentorship that carries members into consulting, finance, and technology."},
+    {title: "Alumni network", text: "An alumni network across consulting, finance, and technology that stays open to members long after they graduate."},
+    {title: "Chapter life", text: "A close community outside the work, and the friendships that come with it."},
 ];
 
 // Set once per recruiting cycle. The Join page keys off it.
-export const CYCLE = {label: "Winter 2026 recruitment", open: false};
+export const CYCLE = {label: "Fall 2026 recruitment", open: true};
 
 // Twelve to spotlight on Services; the rest are summarized as a count.
 export const featuredClients = [
-    "UnitedWay", "RonaldMcDonaldHouse", "SublimeSystems", "SpecialOlympicsSouthernCalifornia", "GuideDogsOfAmerica", "BestBuddies",
+    "BenNJerrys", "UnitedWay", "RonaldMcDonaldHouse", "SublimeSystems", "SpecialOlympicsSouthernCalifornia", "GuideDogsOfAmerica",
     "AlzheimersOC", "BBBSOC", "AutismPartnershipFoundation", "CASAOC", "BoysHopeGirlsHope", "CatalystFamilyInc",
 ];
 
 // Recruiting FAQ, shown at /join-us/faq. Items marked TODO need exec-board confirmation before launch.
 export const joinFaqs = [
-    {q: "How do I join?", a: "Each cycle opens with an info session and casing workshop, then an application, a group case interview, and an individual behavioral round. The full schedule is on the Join page timeline."},
-    {q: "Do I need consulting experience?", a: "No. We recruit for curiosity and work ethic, then teach the rest through casing workshops, mock interviews, and your first engagement."},
-    {q: "What majors do you recruit?", a: "Every major. Teams mix business, economics, engineering, data science, and humanities backgrounds, and the variety is a strength on projects."},
-    {q: "What do members actually do?", a: "You join a project team of four to six and ship a real deliverable to a real organization over a ten-week engagement, alongside training, socials, retreats, and office tours."},
+    {q: "How do I join?", a: "We hold recruiting seasons in the fall and the winter, both at the start of the quarter. Each season there is an application, then interviews. Dates for the current cycle are on the Join page timeline, and Instagram (@180dcuci) is the fastest place to catch them."},
+    {q: "Do I need consulting experience?", a: "No, and most people who join don’t have any. We recruit for curiosity and work ethic. The rest you pick up through casing workshops, mock interviews, and your first engagement."},
+    {q: "What majors do you recruit?", a: "All of them. Our teams mix business, economics, engineering, data science, and humanities, and that mix genuinely makes the work better. Coming from outside the business school is not a disadvantage here."},
+    {q: "What do members actually do?", a: "You get placed on a team of four to six and build something a real organization will actually use. Around that there’s training, socials, retreats, and office tours."},
     // TODO confirm with exec board: weekly hours.
-    {q: "What is the time commitment?", a: "Plan for roughly five to eight hours a week during an engagement: a team meeting, client touchpoints, and your share of the research and deliverables."},
-    // TODO confirm with exec board: recruiting cadence.
-    {q: "When does recruiting happen?", a: "At the start of the quarter, most cycles. Follow @180dcuci on Instagram for exact dates; the Join page timeline updates each cycle."},
+    {q: "What is the time commitment?", a: "Figure five to eight hours a week while an engagement is running. That covers your team meeting, client touchpoints, and whatever share of the research and deliverables you have taken on."},
     // TODO confirm with exec board: eligibility.
-    {q: "Can freshmen and transfer students apply?", a: "Yes. We evaluate every applicant on the same case and behavioral interviews, regardless of year."},
+    {q: "Can freshmen and transfer students apply?", a: "Yes. Every applicant goes through the same case and behavioral interviews, and what year you are in does not factor into the decision."},
+    {q: "How do I prepare for Round 1?", a: "Round 1 is a group case interview. You work through a case with a few other applicants while our interviewers watch. The thing worth knowing going in: we are watching how you contribute, not who wins the room. Say your structure out loud before you jump to an answer, build on what other people say instead of talking over them, keep an eye on the clock for the group, and make sure you land on a clear recommendation before time runs out. Running one or two practice cases out loud with a friend helps far more than reading about them."},
+    {q: "How do I prepare for Round 2?", a: "Round 2 is a behavioral interview plus a market sizing question. For the behavioral half, come with three or four stories you can tell well: a team you worked on, something you led, something that went badly. Be ready to say why 180DC specifically, not just why consulting. For the market sizing half, practice estimating out loud. State your assumptions, break the number into pieces you can actually reason about, do the arithmetic slowly, and check at the end whether the answer sounds sane. We care much more about how you got there than the number you land on."},
+    {q: "Where can I learn case interviews?", a: "The casing workshop at our info sessions starts from zero, so you do not need to have done any of this before. If you want to go deeper on your own, these are what we usually point people to:", links: [
+        {label: "Management Consulted: case interview guide", href: "https://managementconsulted.com/case-interview/"},
+        {label: "Management Consulted: case interview frameworks", href: "https://managementconsulted.com/case-interview-frameworks/"},
+        // TODO confirm the labels below match what the resources are actually titled.
+        {label: "Case interview frameworks (PDF)", href: "https://caseinterview.com/case_interview_frameworks.pdf"},
+        {label: "Case interview walkthrough (video)", href: "https://youtu.be/57xcFQ3mPj0"},
+    ]},
 ];
 
 // Twelve alumni destinations to spotlight on Join. Files in /public/images/logos.

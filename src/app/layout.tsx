@@ -10,7 +10,7 @@ const interTight = Inter_Tight({variable: "--font-inter-tight", subsets: ["latin
 
 export const metadata: Metadata = {
     title: "180 Degrees Consulting @ UC Irvine",
-    description: "Student consulting teams at UC Irvine, paired with nonprofits, startups, and companies for ten-week engagements.",
+    description: "A consulting practice at UC Irvine advising companies, startups, foundations, and nonprofits on strategy, operations, and growth.",
 };
 
 export default function RootLayout({children}: Readonly<{ children: React.ReactNode }>) {

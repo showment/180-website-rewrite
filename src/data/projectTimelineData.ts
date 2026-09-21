@@ -27,7 +27,7 @@ export const projectTimelineEvents = [
     {
         week: 'Week 7-8',
         title: 'Report Creation',
-        description: 'The team\'s findings are synthesized, and student consultants work on crafting a final report and presentation.'
+        description: 'The team\'s findings are synthesized, and our consultants craft the final report and presentation.'
     },
     {
         week: 'Week 9',

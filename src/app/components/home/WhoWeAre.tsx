@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 // Three staggered columns of two. Aspect ratios alternate so the columns interlock.
@@ -17,9 +18,8 @@ export default function WhoWeAre() {
                     {columns.map((col, ci) => (
                         <div key={ci} className={`flex flex-col gap-3 ${ci === 1 ? 'mt-10' : ci === 2 ? 'mt-4' : ''}`}>
                             {col.map(p => (
-                                <div key={p.file} className={`rounded-2xl overflow-hidden bg-fog ${p.ratio}`}>
-                                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                                    <img src={`/images/collage/${p.file}`} alt={p.alt} className="w-full h-full object-cover" loading="lazy"/>
+                                <div key={p.file} className={`relative rounded-2xl overflow-hidden bg-fog ${p.ratio}`}>
+                                    <Image src={`/images/collage/${p.file}`} alt={p.alt} fill sizes="(max-width: 1024px) 33vw, 200px" className="object-cover"/>
                                 </div>
                             ))}
                         </div>
@@ -27,16 +27,16 @@ export default function WhoWeAre() {
                 </div>
                 <div className="lg:col-span-5 lg:col-start-8">
                     <p className="eyebrow text-brand-deep">Who we are</p>
-                    <h2 className="display mt-4 text-4xl md:text-5xl text-balance">The longest-standing consulting organization at UCI.</h2>
+                    <h2 className="display mt-4 text-4xl md:text-5xl text-balance">The longest-standing consulting organization at UCI</h2>
                     <p className="mt-6 text-slate leading-relaxed">
-                        180 Degrees Consulting is the world&apos;s largest consultancy for nonprofits and social enterprises.
-                        Our UC Irvine branch is the longest-standing consulting group on campus, and today works with
-                        for-profit companies alongside the nonprofits we started with.
+                        180 Degrees Consulting is the world&apos;s largest university-based consultancy. Our UC Irvine
+                        branch was founded in 2017 and advises established companies, venture-backed startups,
+                        foundations, and nonprofits.
                     </p>
                     <p className="mt-4 text-slate leading-relaxed">
-                        Every quarter, teams of four to six students take on a ten-week engagement for an organization in
-                        Orange County. Members leave with client experience, and alumni go on to McKinsey, Bain, BCG,
-                        Goldman Sachs, Google, and Deloitte, among others.
+                        Our teams work across strategy, market research, operations, and finance. Consultants carry
+                        that work into technology, finance, and public service, at firms including McKinsey, Bain, BCG,
+                        Goldman Sachs, and Google.
                     </p>
                     <div className="mt-8 flex flex-wrap gap-3">
                         <Link href="/services" className="pill pill-ink">What we do</Link>

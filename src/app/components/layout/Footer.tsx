@@ -13,7 +13,7 @@ export default function Footer() {
         <footer className="border-t border-line">
             <div className="mx-auto max-w-7xl px-6 lg:px-10 py-10 flex flex-col md:flex-row md:items-start justify-between gap-8">
                 <div className="max-w-md">
-                    <Image src="/images/logo.webp" alt="180 Degrees Consulting UC Irvine" width={180} height={75} className="h-8 w-auto logo-ink"/>
+                    <Image src="/images/logo-dark.webp" alt="180 Degrees Consulting UC Irvine" width={180} height={75} className="h-8 w-auto"/>
                     <p className="mt-4 text-xs text-slate leading-relaxed">
                         We are a student organization acting independently of the University of California. We take full
                         responsibility for our organization and this website.

@@ -1,13 +1,14 @@
 // All homepage copy lives here. Edit words without touching components.
 
 export const heroStats = [
-    {value: "48", label: "client organizations"},
+    {value: "50", suffix: "+", label: "client organizations"},
     {value: "5k", suffix: "+", label: "consulting hours delivered"},
     {value: "9", label: "years on campus"},
 ];
 
 // Transparent-background client logos that survive the white filter in the hero marquee. Files in /public/images/clients.
 export const marqueeClients = [
+    {file: "BenNJerrys.webp", name: "Ben & Jerry's"},
     {file: "UnitedWay.webp", name: "United Way"},
     {file: "RonaldMcDonaldHouse.webp", name: "Ronald McDonald House"},
     {file: "SublimeSystems.webp", name: "Sublime Systems"},
