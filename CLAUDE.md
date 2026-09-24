@@ -13,8 +13,8 @@ Next.js 15 (app router) + Tailwind v4 + React 19. Live at 180dc-uci.org.
 - Hero titles and descriptions are plain and professional. No taglines, no cleverness.
 - Photos are full color except page headers. No tint on team portraits or collages.
 - Team portraits are all the same size (fixed-width cards, flex-wrap, centered short rows).
-- Nav is Services, Team, Join, and a "Work with us" button to /contact. Case Competition is not in the nav.
-- Home stays broad (who we are, a slim stats ledger, CTA). Service detail belongs on /services. The recruiting FAQ lives at /join-us/faq, linked from the Join timeline.
+- Nav is Services, Team, Join, FAQ, and a "Work with us" button to /contact. Case Competition is not in the nav.
+- Home stays broad (who we are, a slim stats ledger, CTA). Service detail belongs on /services. The recruiting FAQ lives at /join-us/faq, in the nav and linked from the Join timeline.
 - Section headings in Title Case ("Executive Board", "Engagement Managers", "Operations & Technology").
 - Bullets, boxes, and icon-card grids are the last resort; prefer hairline ledgers, plain type, and whitespace.
 

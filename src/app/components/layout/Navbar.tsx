@@ -9,6 +9,7 @@ const navLinks = [
     {href: "/services", label: "Services"},
     {href: "/team", label: "Team"},
     {href: "/join-us", label: "Join"},
+    {href: "/join-us/faq", label: "FAQ"},
 ];
 
 export default function NavBar() {
