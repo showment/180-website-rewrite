@@ -97,6 +97,6 @@ export const recruitmentTimelineEvents: RecruitmentEvent[] = [
         location: 'Location on invite',
         icon: Briefcase,
         inviteOnly: true,
-        description: 'Round 2 focuses on behavioral interviews, allowing us to get to know you personally, understand your experiences, and see how your skills align with 180DC’s values and culture. This round also includes a market sizing question, where we care far more about how you structure the estimate than about the final number.',
+        description: 'Round 2 is an individual interview: behavioral questions, a case, and a market sizing question. It is how we assess your thought process as you build a framework, so we care far more about how you structure the problem than about the final answer.',
     },
 ];
